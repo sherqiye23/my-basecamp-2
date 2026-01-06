@@ -1,0 +1,13 @@
+<%- include('../layouts/header') %>
+
+    <h2 class="text-xl font-bold mb-4">Edit Thread</h2>
+
+    <form action="/threads/<%= thread.id %>?_method=PUT" method="POST">
+        <input type="text" name="title" value="<%= thread.title %>" required class="border p-2 w-full mb-4">
+
+        <button class="bg-yellow-500 text-white px-4 py-2 rounded">
+            Update
+        </button>
+    </form>
+
+    <%- include('../layouts/footer') %>

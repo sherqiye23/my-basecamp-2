@@ -1,0 +1,9 @@
+<form action="/messages" method="POST" class="mt-3">
+    <input type="hidden" name="threadId" value="<%= thread.id %>">
+
+    <textarea name="content" required class="border p-2 w-full mb-2" placeholder="Write your message..."></textarea>
+
+    <button class="bg-blue-600 text-white px-3 py-1 rounded">
+        Send
+    </button>
+</form>

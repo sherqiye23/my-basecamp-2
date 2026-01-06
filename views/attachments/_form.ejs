@@ -1,0 +1,8 @@
+<form action="/attachments" method="POST" enctype="multipart/form-data" class="flex gap-3 mb-4">
+    <input type="hidden" name="projectId" value="<%= project.id %>">
+
+    <input type="file" name="file" required class="border p-2 rounded w-full">
+    <button type="submit" class="bg-blue-600 text-white px-4 rounded">
+        Upload
+    </button>
+</form>

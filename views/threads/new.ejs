@@ -1,0 +1,15 @@
+<%- include('../layouts/header') %>
+
+    <h2 class="text-xl font-bold mb-4">New Thread</h2>
+
+    <form action="/threads" method="POST">
+        <input type="hidden" name="projectId" value="<%= project.id %>">
+
+        <input type="text" name="title" placeholder="Thread title" required class="border p-2 w-full mb-4">
+
+        <button class="bg-green-600 text-white px-4 py-2 rounded">
+            Create
+        </button>
+    </form>
+
+    <%- include('../layouts/footer') %>

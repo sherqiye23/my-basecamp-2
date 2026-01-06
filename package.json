@@ -1,0 +1,36 @@
+{
+    "name": "mybasecamp_2",
+    "version": "1.0.0",
+    "description": "A web-based project management tool mimicking Basecamp features.",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js",
+        "db:init": "node scripts/init-db.js"
+    },
+    "keywords": [
+        "express",
+        "node",
+        "ejs",
+        "sqlite"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.2",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.6",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "method-override": "^3.0.0",
+        "multer": "^2.0.2",
+        "sequelize": "^6.37.1",
+        "sqlite3": "^5.1.7"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    }
+}

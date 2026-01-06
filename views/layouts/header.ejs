@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= pageTitle %> | MyBasecamp 2
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .flash-success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .flash-error {
+            background-color: #f8d7da;
+            color: #842029;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="text-xl font-bold text-indigo-600">MyBasecamp 2</a>
+                <div>
+                    <% if (user) { %>
+                        <span class="mr-4 text-gray-700">Welcome, <%= user.username %></span>
+                        <a href="/projects/dashboard" class="text-gray-500 hover:text-indigo-600 mr-4">Dashboard</a>
+                        <% if (user.role === 'admin') { %>
+                            <a href="/users/admin" class="text-gray-500 hover:text-indigo-600 mr-4">Users</a>
+                            <% } %>
+                                <form action="/logout" method="POST" class="inline">
+                                    <button type="submit" class="text-red-500 hover:text-red-700">Log Out</button>
+                                </form>
+                                <% } else { %>
+                                    <a href="/login" class="text-gray-500 hover:text-indigo-600 mr-4">Login</a>
+                                    <a href="/register"
+                                        class="text-indigo-600 hover:text-indigo-800 font-medium">Signup</a>
+                                    <% } %>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <% if (success_msg.length> 0) { %>
+            <div class="flash-success">
+                <%= success_msg %>
+            </div>
+            <% } %>
+                <% if (error_msg.length> 0) { %>
+                    <div class="flash-error">
+                        <%= error_msg %>
+                    </div>
+                    <% } %>
+                        <% if (typeof errors !=='undefined' && errors.length> 0) { %>
+                            <div class="flash-error">
+                                <% errors.forEach(error=> { %>
+                                    <p>
+                                        <%= error.msg %>
+                                    </p>
+                                    <% }); %>
+                            </div>
+                            <% } %>

@@ -1,0 +1,75 @@
+<%- include('../layouts/header') %>
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Project Board</h1>
+    <div class="mb-8 flex justify-between items-center">
+        <p class="text-gray-600">Manage all your projects from here</p>
+        <a href="/projects/new"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md shadow-md transition duration-150">
+            + Create a New Project
+        </a>
+    </div>
+
+    <% if (myProjects.length===0 && sharedProjects.length===0) { %>
+        <div class="text-center py-10 border border-dashed border-gray-300 rounded-lg bg-white">
+            <p class="text-lg text-gray-500 mb-3">There is no project yet</p>
+            <a href="/projects/new" class="text-indigo-600 hover:text-indigo-800 font-medium">Create your first
+                project!</a>
+        </div>
+        <% } else { %>
+            <div class="space-y-10">
+                <section>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Projects I've created</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <% if (myProjects.length> 0) { %>
+                            <% myProjects.forEach(project=> { %>
+                                <div
+                                    class="bg-white p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-200">
+                                    <a href="/projects/<%= project.id %>"
+                                        class="text-xl font-bold text-indigo-600 hover:text-indigo-800 block mb-2">
+                                        <%= project.title %>
+                                    </a>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                                        <%= project.description %>
+                                    </p>
+                                    <p class="text-xs text-gray-500">Creation: <%=
+                                            project.createdAt.toLocaleDateString('en-US') %>
+                                    </p>
+                                    <a href="/projects/<%= project.id %>/edit"
+                                        class="text-sm text-gray-500 hover:text-indigo-600 mt-2 inline-block">Edit</a>
+                                </div>
+                                <% }) %>
+                                    <% } else { %>
+                                        <p class="text-gray-500 col-span-full">You haven't created a project yet</p>
+                                        <% } %>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Other Projects (Shared)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <% if (sharedProjects.length> 0) { %>
+                            <% sharedProjects.forEach(project=> { %>
+                                <div class="bg-white p-6 border border-gray-200 rounded-lg shadow">
+                                    <a href="/projects/<%= project.id %>"
+                                        class="text-xl font-bold text-gray-800 hover:text-indigo-600 block mb-2">
+                                        <%= project.title %>
+                                    </a>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                                        <%= project.description %>
+                                    </p>
+                                    <p class="text-xs text-gray-500">Created: <%= project.creator.username %>
+                                    </p>
+                                    <p class="text-xs text-gray-500">Creation: <%=
+                                            project.createdAt.toLocaleDateString('en-US') %>
+                                    </p>
+                                </div>
+                                <% }) %>
+                                    <% } else { %>
+                                        <p class="text-gray-500 col-span-full">No other projects have been shared with you</p>
+                                        <% } %>
+                    </div>
+                </section>
+            </div>
+
+            <% } %>
+
+                <%- include('../layouts/footer') %>

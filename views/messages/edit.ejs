@@ -1,0 +1,13 @@
+<%- include('../layouts/header') %>
+
+    <h2 class="text-xl font-bold mb-4">Edit Message</h2>
+
+    <form action="/messages/<%= message.id %>?_method=PUT" method="POST">
+        <textarea name="content" required class="border p-2 w-full mb-4"><%= message.content %></textarea>
+
+        <button class="bg-yellow-500 text-white px-4 py-2 rounded">
+            Update
+        </button>
+    </form>
+
+    <%- include('../layouts/footer') %>

@@ -1,0 +1,8 @@
+<%- include('../layouts/header') %>
+<h1 class="text-3xl font-bold mb-6">All Users</h1>
+<ul class="list-disc pl-5">
+    <% users.forEach(user => { %>
+        <li class="mb-2"><%= user.username %> (<%= user.email %>) - Role: <%= user.role %></li>
+    <% }); %>
+</ul>
+<%- include('../layouts/footer') %>
